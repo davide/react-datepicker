@@ -8,6 +8,7 @@ A fork of https://github.com/misino/react-datepicker.
 
 ### Usage
 
+
 Install in your project:
 
 ```
@@ -28,7 +29,9 @@ And then include via require():
  
  React.renderComponent(
      <DatePickerInput 
-        classNamePrefix={"wide-datepicker"} date={new Date(2012, 0, 4)} beforeUpdate={formatDate} />,
+        classNamePrefix={"wide-datepicker"} 
+        date={new Date(2012, 0, 4)} 
+        beforeUpdate={formatDate} />,
         document.getElementById('datepicker-input')
  );
 
@@ -37,6 +40,7 @@ And then include via require():
 Then bundle with something that can package your stuff for the browser, like browserify.
  
 ### Customize
+
  
 You can change the css class prefix used by passing in the classNamePrefix property. See the [example](example/) and [stylus](css/datepicker.styl) to see this in action.
  
