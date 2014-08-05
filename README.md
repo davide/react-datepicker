@@ -34,10 +34,10 @@ And then include via require():
 
 ```
  
- Then bundle with something that can package your stuff for the browser, like browserify.
+Then bundle with something that can package your stuff for the browser, like browserify.
  
- ### Customize
+### Customize
  
- You can change the css class prefix used by passing in the classNamePrefix property. See the [example](example/) and [stylus](css/datepicker.styl) to see this in action.
+You can change the css class prefix used by passing in the classNamePrefix property. See the [example](example/) and [stylus](css/datepicker.styl) to see this in action.
  
  
