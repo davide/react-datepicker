@@ -4,7 +4,9 @@
   "description": "A standalone ReactJS datepicker component",
   "keywords": [
     "React",
-    "Datepicker"
+    "Datepicker",
+    "Date",
+    "Calendar"
   ],
   "repository": {
     "type": "git",

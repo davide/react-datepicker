@@ -16,7 +16,7 @@ npm install react-datepicker-component
 
 And then include via require(): 
  
- ```
+```
  var React = require('react'),
    DatePicker = require('react-datepicker-component/DatePicker.jsx'),
    DatePickerInput = require('react-datepicker-component/DatePickerInput.jsx');
@@ -32,7 +32,7 @@ And then include via require():
         document.getElementById('datepicker-input')
  );
 
- ```
+```
  
  Then bundle with something that can package your stuff for the browser, like browserify.
  
