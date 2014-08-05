@@ -3,15 +3,21 @@
 var React = require('react'),
   DatePicker = require('./DatePicker.jsx');
 
-var DatePickerInput = React.createClass(/** @lends {React.ReactComponent.prototype} */{
+var DatePickerInput = React.createClass({
     /**
      *
      * @returns {{date: Date}}
      */
     getDefaultProps: function() {
-        return({'date':new Date(), 'beforeUpdate': function(date) {
-            return date;
-        }});
+        return(
+        {
+          date : new Date(),
+          beforeUpdate :
+            function(date) {
+              return date;
+          },
+          classNamePrefix : "datepicker"
+        });
     },
     /**
      *
@@ -35,15 +41,22 @@ var DatePickerInput = React.createClass(/** @lends {React.ReactComponent.prototy
         this.setState({show:false});
     },
     render: function() {
-        var style={position:'fixed', top:0,left:0, width:'100%', height:'100%', display:(this.state.show?'block':'none')};
-        // DatePicker is not defined as JSX because of closure compiler
+        var style = {
+          position:'fixed',
+          top:0,
+          left:0,
+          width:'100%',
+          height:'100%',
+          display: (this.state.show ? 'block' : 'none')
+        };
+
         return (
             <div>
                 <div style={style} onClick={this.hideDatePicker}></div>
-                <div className="datepicker-wrapper">
-                {DatePicker( {'date':this.props['date'], 'show':this.state.show, 'onChangeDate':this.onChangeDate})}
+                <div className={this.props.classNamePrefix + "-wrapper"}>
+                {this.transferPropsTo(<DatePicker show={this.state.show} />)}
                 </div>
-                <input type="text" onFocus={this.showDatePicker} value={this.props['beforeUpdate'](this.props['date'])} />
+                <input type="text" onFocus={this.showDatePicker} value={this.props.beforeUpdate(this.props['date'])} />
             </div>
             );
     }

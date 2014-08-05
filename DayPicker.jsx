@@ -2,7 +2,7 @@
 
 var React = require('react'),
   Day = require('./Day.jsx'),
-  DateUtils = require('../../utils/DateUtils');
+  DateUtils = require('./utils/DateUtils');
 
 var DayPicker = React.createClass(/** @lends {React.ReactComponent.prototype} */{
     /**
@@ -44,7 +44,7 @@ var DayPicker = React.createClass(/** @lends {React.ReactComponent.prototype} */
         }.bind(this));
 
         return (
-            <div className="datepicker-dates">
+            <div className={this.props.classNamePrefix + "-dates"}>
                 <div className="out">
                 {previousMonthDays}
                 </div>

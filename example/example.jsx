@@ -1,8 +1,8 @@
 /** @jsx React.DOM */
 
 var React = require('react'),
-  DatePicker = require('../js/ui/datepicker/DatePicker.jsx'),
-  DatePickerInput = require('../js/ui/datepicker/DatePickerInput.jsx');
+  DatePicker = require('../DatePicker.jsx'),
+  DatePickerInput = require('../DatePickerInput.jsx');
 
 React.renderComponent(
     <DatePicker date={new Date(2010, 0, 4)} />,
@@ -22,6 +22,6 @@ var formatDate = function(date) {
 }
 
 React.renderComponent(
-    <DatePickerInput date={new Date(2012, 0, 4)} beforeUpdate={formatDate} />,
+    <DatePickerInput classNamePrefix={"wide-datepicker"} date={new Date(2012, 0, 4)} beforeUpdate={formatDate} />,
     document.getElementById('datepicker-input')
 );
