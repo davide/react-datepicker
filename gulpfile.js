@@ -10,13 +10,6 @@ function getJSBundler (path) {
     return browserify([path]).transform("reactify");
 }
 
-gulp.task('bundle', function() {
-    getJSBundler("./DatePicker.jsx")
-        .bundle()
-        .pipe(source('datepicker.js'))
-        .pipe(gulp.dest('./build/'));
-});
-
 gulp.task('bundle-example', function() {
     getJSBundler("./example/example.jsx")
         .bundle()

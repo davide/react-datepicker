@@ -1,13 +1,15 @@
 /** @jsx React.DOM */
 
 var React = require('react'),
-  DatePicker = require('../DatePicker.jsx'),
-  DatePickerInput = require('../DatePickerInput.jsx');
+  DatePickerComponents = require('../index');
+  DatePicker = DatePickerComponents.DatePicker,
+  DatePickerInput = DatePickerComponents.DatePickerInput;
 
 React.renderComponent(
     <DatePicker date={new Date(2010, 0, 4)} />,
     document.getElementById('datepicker')
 );
+
 
 /**
  * @param {Date} date
