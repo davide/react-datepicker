@@ -25,7 +25,7 @@ var formatDate = function(date) {
 }
 
 React.renderComponent(
-    DatePickerInput({classNamePrefix: "wide-datepicker", date: new Date(2012, 0, 4), beforeUpdate: formatDate}),
+    DatePickerInput({classNamePrefix: "wide-datepicker", date: new Date(2012, 0, 4), dateFormatter: formatDate}),
     document.getElementById('datepicker-input')
 );
 
@@ -130,62 +130,68 @@ var React = require('react'),
   DatePicker = require('./DatePicker.jsx');
 
 var DatePickerInput = React.createClass({displayName: 'DatePickerInput',
-    /**
-     *
-     * @returns {{date: Date}}
-     */
-    getDefaultProps: function() {
-        return(
-        {
-          date : new Date(),
-          beforeUpdate :
-            function(date) {
-              return date;
-          },
-          classNamePrefix : "datepicker"
-        });
-    },
-    /**
-     *
-     * @returns {{show: boolean}}
-     */
-    getInitialState: function() {
-        return {show:false};
-    },
-    showDatePicker: function() {
-        this.setState({show:true});
-    },
-    hideDatePicker: function() {
-        this.setState({show:false});
-    },
-    /**
-     *
-     * @param {Date} date
-     */
-    onChangeDate: function(date) {
-        this.props['date'] = date;
-        this.setState({show:false});
-    },
-    render: function() {
-        var style = {
-          position:'fixed',
-          top:0,
-          left:0,
-          width:'100%',
-          height:'100%',
-          display: (this.state.show ? 'block' : 'none')
-        };
+  /**
+   *
+   * @returns {{date: Date}}
+   */
+  getDefaultProps: function() {
+    return(
+    {
+      date : new Date(),
+      dateFormatter : function(date) {
+        var output = '';
+        output+=date.getMonth()+1+'/';
+        output+=date.getDate()+'/';
+        output+=date.getFullYear();
+        return output;
+      },
+      onChangeDate : function() {},
+      classNamePrefix : "datepicker"
+    });
+  },
+  /**
+   *
+   * @returns {{show: boolean}}
+   */
+  getInitialState: function() {
+    return {show:false};
+  },
+  showDatePicker: function() {
+    this.setState({show:true});
+  },
+  hideDatePicker: function() {
+    this.setState({show:false});
+  },
+  /**
+   *
+   * @param {Date} date
+   */
+  onChangeDate: function(date) {
+    this.props.date = date;
+    this.setState({show:false});
+    this.props.onChangeDate(date);
+  },
 
-        return (
-            React.DOM.div(null, 
-                React.DOM.div({style: style, onClick: this.hideDatePicker}), 
-                React.DOM.div({className: this.props.classNamePrefix + "-wrapper"}, 
-                this.transferPropsTo(DatePicker({show: this.state.show}))
-                ), 
-                React.DOM.input({type: "text", onFocus: this.showDatePicker, value: this.props.beforeUpdate(this.props['date'])})
-            )
-            );
-    }
+  render: function() {
+    var style = {
+      position:'fixed',
+      top:0,
+      left:0,
+      width:'100%',
+      height:'100%',
+      display: (this.state.show ? 'block' : 'none')
+    };
+
+    return (
+      React.DOM.div({className: this.props.classNamePrefix + "-input"}, 
+        React.DOM.div({style: style, onClick: this.hideDatePicker}), 
+        React.DOM.div({className: this.props.classNamePrefix + "-wrapper"}, 
+          this.transferPropsTo(DatePicker({show: this.state.show, onChangeDate: this.onChangeDate}))
+        ), 
+        React.DOM.input({type: "text", onFocus: this.showDatePicker, value: this.props.dateFormatter(this.props.date), readOnly: true})
+      )
+      );
+  }
 });
 
 module.exports = DatePickerInput;

@@ -24,6 +24,6 @@ var formatDate = function(date) {
 }
 
 React.renderComponent(
-    <DatePickerInput classNamePrefix={"wide-datepicker"} date={new Date(2012, 0, 4)} beforeUpdate={formatDate} />,
+    <DatePickerInput classNamePrefix={"wide-datepicker"} date={new Date(2012, 0, 4)} dateFormatter={formatDate} />,
     document.getElementById('datepicker-input')
 );
