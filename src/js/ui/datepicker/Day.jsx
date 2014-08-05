@@ -1,6 +1,6 @@
 /** @jsx React.DOM */
 
-goog.provide('misino.ui.datepicker.Day');
+var React = require('react');
 
 var Day = React.createClass(/** @lends {React.ReactComponent.prototype} */{
     /**
@@ -28,3 +28,5 @@ var Day = React.createClass(/** @lends {React.ReactComponent.prototype} */{
             );
     }
 });
+
+module.exports = Day;

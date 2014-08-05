@@ -1,8 +1,8 @@
 /** @jsx React.DOM */
 
-goog.provide('misino.ui.datepicker.DayPicker');
-goog.require('misino.utils.DateUtils');
-goog.require('misino.ui.datepicker.Day');
+var React = require('react'),
+  Day = require('./Day.jsx'),
+  DateUtils = require('../../utils/DateUtils');
 
 var DayPicker = React.createClass(/** @lends {React.ReactComponent.prototype} */{
     /**
@@ -21,7 +21,7 @@ var DayPicker = React.createClass(/** @lends {React.ReactComponent.prototype} */
 
         var previousMonthDays = daysArray.map(function(day){
             var thisDate = DateUtils.createNewDayMonth(day, date.getMonth()-1, date.getTime());
-            return <Day date={thisDate} week={1} changeDate={this.selectDay} />
+            return <Day key={'day-prev-mo-' + day} date={thisDate} week={1} changeDate={this.selectDay} />
         }.bind(this));
 
         daysArray = DateUtils.getArrayByBoundary(1, DateUtils.daysInMonthCount(date.getMonth(), date.getFullYear()));
@@ -33,14 +33,14 @@ var DayPicker = React.createClass(/** @lends {React.ReactComponent.prototype} */
             if(date.getMonth()==this.props.selectedDate.getMonth() && date.getFullYear()==this.props.selectedDate.getFullYear()) {
                 selected = (day==this.props.selectedDate.getDate());
             }
-            return <Day selected={selected} date={thisDate} week={weekNumber} changeDate={this.selectDay} />
+            return <Day key={'day-mo-' + day} selected={selected} date={thisDate} week={weekNumber} changeDate={this.selectDay} />
         }.bind(this));
 
         daysArray = DateUtils.getArrayByBoundary(1, 42- previousMonthDays.length - actualMonthDays.length);
         var nextMonthDays = daysArray.map(function(day){
             var thisDate = DateUtils.createNewDayMonth(day, date.getMonth()+1, date.getTime()),
                 weekNumber = Math.ceil((previousMonthDays.length + actualMonthDays.length + day) / 7);
-            return <Day date={thisDate} week={weekNumber} changeDate={this.selectDay} />
+            return <Day key={'day-next-mo-' + day} date={thisDate} week={weekNumber} changeDate={this.selectDay} />
         }.bind(this));
 
         return (
@@ -58,3 +58,5 @@ var DayPicker = React.createClass(/** @lends {React.ReactComponent.prototype} */
             );
     }
 });
+
+module.exports = DayPicker;

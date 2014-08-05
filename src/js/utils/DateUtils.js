@@ -1,5 +1,3 @@
-goog.provide('misino.utils.DateUtils');
-
 var DateUtils = {
     /**
      * Gets count of days in current month.
@@ -51,3 +49,5 @@ var DateUtils = {
         return newDate;
     }
 }
+
+module.exports = DateUtils;

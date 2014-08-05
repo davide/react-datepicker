@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 
-goog.provide('misino.ui.datepicker.DatePickerInput');
-goog.require('misino.ui.datepicker.DatePicker');
+var React = require('react'),
+  DatePicker = require('./DatePicker.jsx');
 
 var DatePickerInput = React.createClass(/** @lends {React.ReactComponent.prototype} */{
     /**
@@ -49,4 +49,4 @@ var DatePickerInput = React.createClass(/** @lends {React.ReactComponent.prototy
     }
 });
 
-goog.exportSymbol('DatePickerInput', DatePickerInput);
+module.exports = DatePickerInput;

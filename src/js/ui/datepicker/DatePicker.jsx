@@ -1,10 +1,10 @@
 /** @jsx React.DOM */
 
-goog.provide('misino.ui.datepicker.DatePicker');
-goog.require('misino.ui.numberpicker.NumberPicker');
-goog.require('misino.ui.datepicker.DayPicker');
+var React = require('react'),
+  MonthPicker = require('./MonthPicker.jsx'),
+  DayPicker = require('./DayPicker.jsx');
 
-var DatePicker = React.createClass(/** @lends {React.ReactComponent.prototype} */{
+var DatePicker = React.createClass({
     /**
      *
      * @param {Date} date
@@ -55,7 +55,7 @@ var DatePicker = React.createClass(/** @lends {React.ReactComponent.prototype} *
     changeMonth: function(month) {
         var date = new Date();
         date.setTime(this.state.visibleDate.getTime());
-        date.setMonth(month-1);
+        date.setMonth(month);
         this.setState({visibleDate:date});
     },
     render: function () {
@@ -63,8 +63,7 @@ var DatePicker = React.createClass(/** @lends {React.ReactComponent.prototype} *
         return (
             <div className="datepicker" style={style}>
                 <div className="datepicker-container">
-                    <NumberPicker number={this.state.visibleDate.getFullYear()} onChangeNumber={this.changeYear} />
-                    <NumberPicker number={this.state.visibleDate.getMonth()+1} onChangeNumber={this.changeMonth} />
+                    <MonthPicker date={this.state.visibleDate} onChangeMonth={this.changeMonth} />
 
                     <DayPicker date={this.state.visibleDate} selectedDate={this.props['date']} changeDate={this.onChangeVisibleDate} selectDate={this.onChangeSelectedDate} />
                 </div>
@@ -73,4 +72,4 @@ var DatePicker = React.createClass(/** @lends {React.ReactComponent.prototype} *
     }
 });
 
-goog.exportSymbol('DatePicker', DatePicker);
+module.exports = DatePicker;
