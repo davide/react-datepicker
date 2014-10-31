@@ -44,8 +44,8 @@ var DateUtils = {
     createNewDayMonth: function(date, month, time) {
         var newDate = new Date();
         newDate.setTime(time);
-        newDate.setMonth(month);
         newDate.setDate(date);
+        newDate.setMonth(month);
         return newDate;
     }
 }
