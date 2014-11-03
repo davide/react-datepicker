@@ -1,6 +1,6 @@
 {
   "name": "react-datepicker-component",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "A standalone ReactJS datepicker component, no jquery etc..",
   "author" : "Mandarin Drummond",
   "contributors" : ["Michal Biros <birosh@gmail.com>"],
