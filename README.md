@@ -1,3 +1,8 @@
+# NOTE: This project is no longer actively maintained. If you would like to use it, go ahead, but there are better options available here:
+
+* https://github.com/zippyui/react-date-picker
+* https://github.com/Hacker0x01/react-datepicker
+
 ## React DatePicker Component
 
 A fork of https://github.com/misino/react-datepicker. 
