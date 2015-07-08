@@ -1,5 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-/** @jsx React.DOM */
+
 
 var React = require('react'),
   DatePickerComponents = require('../index');
@@ -30,7 +30,7 @@ React.renderComponent(
 );
 
 },{"../index":7,"react":142}],2:[function(require,module,exports){
-/** @jsx React.DOM */
+
 
 var React = require('react'),
   MonthPicker = require('./MonthPicker.jsx'),
@@ -104,17 +104,17 @@ var DatePicker = React.createClass({displayName: 'DatePicker',
       display: (this.props.show ? 'block' : 'none')
     };
     return (
-      React.DOM.div({className: this.props.classNamePrefix, style: style}, 
-        React.DOM.div({className: this.props.classNamePrefix + "-container"}, 
+      React.DOM.div({className: this.props.classNamePrefix, style: style},
+        React.DOM.div({className: this.props.classNamePrefix + "-container"},
           MonthPicker({
-            date: this.state.visibleDate, 
-            onChangeMonth: this.changeMonth, 
-            classNamePrefix: this.props.classNamePrefix}), 
+            date: this.state.visibleDate,
+            onChangeMonth: this.changeMonth,
+            classNamePrefix: this.props.classNamePrefix}),
           DayPicker({
-            date: this.state.visibleDate, 
-            selectedDate: this.props.date, 
-            changeDate: this.onChangeVisibleDate, 
-            selectDate: this.onChangeSelectedDate, 
+            date: this.state.visibleDate,
+            selectedDate: this.props.date,
+            changeDate: this.onChangeVisibleDate,
+            selectDate: this.onChangeSelectedDate,
             classNamePrefix: this.props.classNamePrefix})
         )
       )
@@ -124,7 +124,7 @@ var DatePicker = React.createClass({displayName: 'DatePicker',
 
 module.exports = DatePicker;
 },{"./DayPicker.jsx":5,"./MonthPicker.jsx":6,"react":142}],3:[function(require,module,exports){
-/** @jsx React.DOM */
+
 
 var React = require('react'),
   DatePicker = require('./DatePicker.jsx');
@@ -183,11 +183,11 @@ var DatePickerInput = React.createClass({displayName: 'DatePickerInput',
     };
 
     return (
-      React.DOM.div({className: this.props.classNamePrefix + "-input"}, 
-        React.DOM.div({style: style, onClick: this.hideDatePicker}), 
-        React.DOM.div({className: this.props.classNamePrefix + "-wrapper"}, 
+      React.DOM.div({className: this.props.classNamePrefix + "-input"},
+        React.DOM.div({style: style, onClick: this.hideDatePicker}),
+        React.DOM.div({className: this.props.classNamePrefix + "-wrapper"},
           this.transferPropsTo(DatePicker({show: this.state.show, onChangeDate: this.onChangeDate}))
-        ), 
+        ),
         React.DOM.input({type: "text", onFocus: this.showDatePicker, value: this.props.dateFormatter(this.props.date), readOnly: true})
       )
       );
@@ -196,7 +196,7 @@ var DatePickerInput = React.createClass({displayName: 'DatePickerInput',
 
 module.exports = DatePickerInput;
 },{"./DatePicker.jsx":2,"react":142}],4:[function(require,module,exports){
-/** @jsx React.DOM */
+
 
 var React = require('react');
 
@@ -220,7 +220,7 @@ var Day = React.createClass(/** @lends {React.ReactComponent.prototype} */{displ
         var className="day week-"+this.props.week+" dayInWeek-"+this.props.date.getDay();
         className += (this.props.selected?' selected':'');
         return (
-            React.DOM.div({className: className}, 
+            React.DOM.div({className: className},
                 React.DOM.a({href: "#", onClick: this.handleClick}, this.props.date.getDate())
             )
             );
@@ -229,7 +229,7 @@ var Day = React.createClass(/** @lends {React.ReactComponent.prototype} */{displ
 
 module.exports = Day;
 },{"react":142}],5:[function(require,module,exports){
-/** @jsx React.DOM */
+
 
 var React = require('react'),
   Day = require('./Day.jsx'),
@@ -275,14 +275,14 @@ var DayPicker = React.createClass(/** @lends {React.ReactComponent.prototype} */
         }.bind(this));
 
         return (
-            React.DOM.div({className: this.props.classNamePrefix + "-dates"}, 
-                React.DOM.div({className: "out"}, 
+            React.DOM.div({className: this.props.classNamePrefix + "-dates"},
+                React.DOM.div({className: "out"},
                 previousMonthDays
-                ), 
-                React.DOM.div(null, 
+                ),
+                React.DOM.div(null,
                 actualMonthDays
-                ), 
-                React.DOM.div({className: "out"}, 
+                ),
+                React.DOM.div({className: "out"},
                 nextMonthDays
                 )
             )
@@ -292,7 +292,7 @@ var DayPicker = React.createClass(/** @lends {React.ReactComponent.prototype} */
 
 module.exports = DayPicker;
 },{"./Day.jsx":4,"./utils/DateUtils":143,"react":142}],6:[function(require,module,exports){
-/** @jsx React.DOM */
+
 
 var React = require('react');
 
@@ -316,9 +316,9 @@ var MonthPicker = React.createClass({displayName: 'MonthPicker',
 
   render: function() {
     return (
-      React.DOM.div({className: "monthpicker"}, 
-        React.DOM.a({onClick: this.changeMonth.bind(this, this.props.date.getMonth()-1), className: this.props.buttonClassNames}, "<<"), 
-        React.DOM.span({className: this.props.textClassNames}, monthNames[this.props.date.getMonth()] + ", " + this.props.date.getFullYear()), 
+      React.DOM.div({className: "monthpicker"},
+        React.DOM.a({onClick: this.changeMonth.bind(this, this.props.date.getMonth()-1), className: this.props.buttonClassNames}, "<<"),
+        React.DOM.span({className: this.props.textClassNames}, monthNames[this.props.date.getMonth()] + ", " + this.props.date.getFullYear()),
         React.DOM.a({onClick: this.changeMonth.bind(this, this.props.date.getMonth()+1), className: this.props.buttonClassNames}, ">>")
       )
       )

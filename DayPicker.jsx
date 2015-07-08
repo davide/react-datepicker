@@ -1,4 +1,4 @@
-/** @jsx React.DOM */
+
 
 var React = require('react'),
   Day = require('./Day.jsx'),
